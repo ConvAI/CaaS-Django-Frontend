@@ -7,6 +7,6 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username','password','email')
 class UserProfileInfoForm(forms.ModelForm):
-     class Meta():
+    class Meta():
         model = UserProfileInfo
         fields = ('portfolio_site','profile_pic')
