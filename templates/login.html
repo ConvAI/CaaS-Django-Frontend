@@ -1,17 +1,33 @@
-{% extends 'base.html' %}
+{% extends "base1.html" %}
 {% block body_block %}
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Login here :</h1>
-      <form method="post" action="{% url 'user:user_login' %}">
-        {% csrf_token %}
-        {# A more "HTML" way of creating the login form#}
-        <label for="username">Username:</label>
-        <input type="text" name="username" placeholder="Username">
-        <label for="password">Password:</label>
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="" value="Login">
-      </form>
+{% load static %}
+
+<section class="margin_top">
+  <div class="container padding_top">
+      <div class="row">
+          <div class="col-lg-5">
+              <div class="banner_text">
+                <h1>Sign In</h1>
+
+                <form method="post" action="{% url 'user:user_login' %}">
+                    {% csrf_token %}
+                    {# A more "HTML" way of creating the login form#}
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" name="username" class="form-control" placeholder="Enter username">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                      <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+
+              </div>
+          </div>
+      </div>
     </div>
-  </div>
+</section>
+
 {% endblock %}
