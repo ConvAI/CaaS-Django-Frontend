@@ -1,2 +1,5 @@
 .vscode
 launch.json
+/media
+*.pyc
+settings.json
