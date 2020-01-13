@@ -4,8 +4,11 @@ from django.contrib.auth.models import User
 
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    portfolio_site = models.URLField(blank=True)
-    profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
+    c_name = models.CharField(max_length=120)
+    c_desc = models.TextField(blank=True)
+    c_type = models.CharField(max_length=100,default="None")
+    c_url = models.URLField(blank=True)
+    c_logo = models.ImageField(upload_to='c_logos',blank=True)
     
     def __str__(self):
         return self.user.username

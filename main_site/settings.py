@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'main_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'phpmyadmin',
+        'NAME': 'nervaidb',
         'USER': 'admin',
         'PASSWORD': 'test',
         'HOST': '127.0.0.1',
