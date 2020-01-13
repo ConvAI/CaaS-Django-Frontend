@@ -4,7 +4,7 @@
     <!-- banner part start-->
     <section class="banner_part">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row mt-ng align-items-center">
                 <div class="col-lg-7">
                     <div class="banner_text">
                         <div class="banner_text_iner">
@@ -14,7 +14,9 @@
                                 sed do eiusmod tempor incididunt ut labore et dolore magna
                                 aliqua. Ut enim ad minim veniam.</p>
                             <a href="#" class="btn_2 banner_btn_1">Get Started </a>
-                            <a href="#" class="btn_2 banner_btn_2">Sign up for free </a>
+                            {% if user.is_anonymous%}
+                            <a href="{% url 'user:register' %}" class="btn_2 banner_btn_2">Sign up for free </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -43,7 +45,9 @@
                             sed do eiusmod tempor incididunt ut labore et dolore magna
                             aliqua. Ut enim ad minim</p>
                         <a href="#" class="btn_1">get started</a>
-                        <a href="#" class="btn_2">sing up free</a>
+                        {% if user.is_anonymous%}
+                            <a href="{% url 'user:register' %}" class="btn_2 banner_btn_2">Sign up for free </a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
@@ -62,7 +66,7 @@
 
     <!-- use sasu part end-->
     <section class="use_sasu">
-        <div class="container">
+        <div class="container pb-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="section_tittle text-center">
@@ -121,8 +125,10 @@
                             sed do eiusmod tempor incididunt ut labore et dolore magna
                             aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo</p>
                         <a href="#" class="btn_2 banner_btn_1">Get Started </a>
-                        <a href="#" class="btn_2 banner_btn_2">Sign up for free </a>
-                    </div>
+                        {% if user.is_anonymous%}
+                            <a href="{% url 'user:register' %}" class="btn_2 banner_btn_2">Sign up for free </a>
+                        {% endif %}
+                        </div>
                 </div>
             </div>
         </div>

@@ -2401,6 +2401,12 @@ ul {
 
 /**************** banner part css start ****************/
 /* line 2, ../../01 cl html template/03_jun 2019/184_SAAS_template/sass/_banner.scss */
+
+.mt-ng{
+  /* padding-top: -100px !important ; */
+  margin-top: -70px !important;
+}
+
 .banner_part {
   position: relative;
   overflow: hidden;

@@ -97,8 +97,10 @@
                             sed do eiusmod tempor incididunt ut labore et dolore magna
                             aliqua. Ut enim ad minim</p>
                         <a href="#" class="btn_1">get started</a>
-                        <a href="#" class="btn_2">sing up free</a>
-                    </div>
+                        {% if user.is_anonymous%}
+                            <a href="{% url 'user:register' %}" class="btn_2 banner_btn_2">Sign up for free </a>
+                        {% endif %}
+                        </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="learning_img">
@@ -125,7 +127,9 @@
                             sed do eiusmod tempor incididunt ut labore et dolore magna
                             aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo</p>
                         <a href="#" class="btn_2 banner_btn_1">Get Started </a>
-                        <a href="#" class="btn_2 banner_btn_2">Sign up for free </a>
+                        {% if user.is_anonymous%}
+                            <a href="{% url 'user:register' %}" class="btn_2 banner_btn_2">Sign up for free </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

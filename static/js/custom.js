@@ -78,7 +78,7 @@
       }
     });
   
-    if(window.location.pathname == '/user/login/'){
+    if(window.location.pathname.length>2){
         $('.main_menu').addClass('blue');
     }
 

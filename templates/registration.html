@@ -1,21 +1,66 @@
-{% extends "base.html" %}
+{% extends "base1.html" %}
 {% load static %}
 {% block body_block %}
-  <div class="container">
-    <div class="jumbotron">
-      {% if registered %}
-        <h1>Thank you for registering!</h1>
-      {% else %}
-        <h1>Sign up Here</h1>
-        <h3>Just fill out the form.</h3>
-<form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ user_form.as_p }}
-          {{ profile_form.as_p }}
-          <input type="submit" name="" value="Register">
-        </form>
-        
-      {% endif %}
-    </div>
-  </div>
+
+<section class="margin_top">
+    <div class="container padding_top">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="banner_text">
+                  <h1 >Sign Up</h1>
+                  <br>
+                  <form method="post" enctype="multipart/form-data" action="{% url 'user:register' %}">
+                    {% csrf_token %}
+                    <div class="panel border border-primary rounded p-4">
+                      <div class="panel-heading">
+                          <h3 class="panel-title">Company Details</h3>
+                      </div>
+                      <div class="panel-body">
+                          <div class="form-group">
+                              <label for="c_name">Company Name</label>
+                              <input type="text" name="c_name" class="form-control w-50" placeholder="Enter Company Name" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="c_desc">Company Description</label>
+                              <textarea type="text" name="c_desc" class="form-control" placeholder="Write Something about your company"></textarea>
+                          </div>
+                          <div class="form-group">
+                              <label for="c_type">Company Type</label>
+                              <input type="text" name="c_type" class="form-control w-50" placeholder="Enter Company Type(Eg: IT, Marketing,etc)" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="c_logo">Company Logo</label>
+                              <input type="file" name="c_logo" class="form-control-file">
+                          </div>
+                      </div>
+                    </div>
+
+                      <div class="panel panel-info border border-primary rounded p-4 mt-3">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Login Information</h3>
+                        </div>
+                        <div class="panel-body">
+                          <div class="form-group">
+                              <label for="c_username">Username</label>
+                              <input type="text" name="c_username" class="form-control w-50" placeholder="Enter username" required>
+                              <small id="usernameHelp" class="form-text text-muted">Username is used for login</small>
+                          </div>
+                          <div class="form-group">
+                              <label for="c_desc">Email</label>
+                              <input type="email" name="c_email" class="form-control w-50" placeholder="Enter Email" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="c_password">Password</label>
+                            <input type="password" name="c_password" class="form-control w-50" placeholder="Enter Password" required>
+                          </div>
+                        </div>
+                    </div>
+                    <input class="btn btn-primary btn-lg btn-block mt-4" type="submit" value="Sign Up">
+                  </form>     
+                </div>
+            </div>
+        </div>
+      </div>
+  </section>
+
 {% endblock %}
