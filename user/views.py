@@ -37,8 +37,7 @@ def register(request):
             profile.save()
             registered = True
             login(request,user)
-            # TODO redirect to user profile or bot panel
-            return HttpResponseRedirect(reverse('index'))
+            return HttpResponseRedirect(reverse('user:userpanel:panel'))
         else:
             print(user_form.errors,profile_form.errors)
     else:
@@ -59,7 +58,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('user:userpanel:panel'))
             else:
                 return HttpResponse("Your account was inactive.")
         else:
