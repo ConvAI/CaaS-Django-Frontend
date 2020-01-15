@@ -3,10 +3,10 @@ from user.models import UserProfileInfo
 from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
-    c_password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta():
         model = User
-        fields = ('username','c_password','email')
+        fields = ('username','password','email')
         
 class UserProfileInfoForm(forms.ModelForm):
     class Meta():

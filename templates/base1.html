@@ -57,7 +57,7 @@
                 
                                 {% if user.is_authenticated %}
                                 <li class="nav-item">
-                                        <a class="nav-link" href="#">Hello, {{user.username}}</a>  
+                                        <a class="nav-link" href="{% url 'user:userpanel:panel' %}">Hello, {{user.username}}</a>  
                                 </li>
                                 <li class="nav-item">
                                         <a class="nav-link" href="{% url 'user:logout' %}">Logout</a>  
