@@ -12,14 +12,19 @@ To run this project in your development machine, follow these steps:
 
     `pip install -r requirements.txt`
 
-4. Install mysql server and change settings like user, password, port,etc in `main_site/settings.py`
+4. Install mysql server and create a database with name `nervaidb`(or give any other name)
 
-5. Create a development database:
+5. Change field values like user,db name(same name as in above step), password, port,etc in `main_site/settings.py`
 
-    `./manage.py migrate`
+5. Finally run these commands to sync your models with database:
+
+    `python manage.py makemigrations user userpanel`
+
+    `python manage.py migrate`
 
 6. If everything is alright, you should be able to start the Django development server:
 
-    `./manage.py runserver`
+    `python manage.py runserver`
 
 7. Open your browser and go to http://127.0.0.1:8000
+
