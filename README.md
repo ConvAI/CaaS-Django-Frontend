@@ -6,7 +6,7 @@ To run this project in your development machine, follow these steps:
 
 2. Fork this repo and clone your fork:
 
-    `git clone https://github.com/sclorg/django-ex.git`
+    `git clone https://github.com/jpatel0/caas-backend.git`
 
 3. Install dependencies:
 
