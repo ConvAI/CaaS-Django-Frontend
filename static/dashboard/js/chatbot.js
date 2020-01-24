@@ -35,7 +35,7 @@ $(function() {
     var str="";
     str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
     str += "          <div class=\"cm-msg-text\">";
-    str += msg;
+    str += msg[0].toUpperCase() + msg.slice(1);
     str += "          <\/div>";
     str += "        <\/div>";
     $(".chat-logs").append(str);
