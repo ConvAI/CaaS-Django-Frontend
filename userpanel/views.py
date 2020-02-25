@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from user.models import UserProfileInfo
 from userpanel.models import Bot,Language,lang_names
 from userpanel.forms import BotForm,LanguageForm
+from django.http.response import Http404
 
 # Create your views here.
 @login_required
@@ -58,11 +59,38 @@ def editBot(request,bot_id):
         bot_inst = get_object_or_404(Bot, pk=bot_id)
     except Bot.DoesNotExist:
         raise Http404("Bot does not exist")
+    
+    userinfo = UserProfileInfo.objects.get(user=request.user)
     if(request.method == 'POST'):
-        userinfo = UserProfileInfo.objects.get(user=request.user)
         if(request.POST.get('bot_paragraph')):
             bot_inst.paragraph = request.POST.get('bot_paragraph')
             bot_inst.save()
-        return render(request,'editBot.html',context={'bot':bot_inst})
-    return render(request,'editBot.html',{'bot':bot_inst})
+        return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo})
+    return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo})
 
+@login_required
+def deploy(request):
+    userinfo = UserProfileInfo.objects.get(user=request.user)
+    bots = Bot.objects.filter(user=request.user,c_info=userinfo,paragraph__isnull=False)
+    rows = 0
+    count = bots.count()
+    if(count):
+        if(count%3==0):
+            rows = bots.count()//3
+        else:
+            rows = bots.count()//3 + 1
+    return render(request,'deploy.html',context={'userinfo':userinfo,'bots':bots,'rows':range(rows)})
+
+
+@login_required
+def deployBot(request,bot_id):
+    try:
+        bot_inst = get_object_or_404(Bot, pk=bot_id)
+    except Bot.DoesNotExist:
+        raise Http404("Bot does not exist")
+
+    userinfo = UserProfileInfo.objects.get(user=request.user)
+    if(request.method == 'POST'):
+        bot_inst.is_deployed = True
+        bot_inst.save()
+        return render(request,'showScript.html',{'bot':bot_inst})

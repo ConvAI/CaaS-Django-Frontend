@@ -132,3 +132,5 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/user/login/'
+
+BOT_SERVER = 'http://127.0.0.1:3232/chat/'

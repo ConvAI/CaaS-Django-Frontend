@@ -1,0 +1,21 @@
+{% extends "panelbase.html" %}
+{% block body_block %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+
+      <h2>Your Bot has been deployed</h2>
+   </div>
+
+   <p>Copy and embed this script tag in your website.</p>
+
+   <figure class="highlight"><pre><code class="language-html" data-lang="html">
+
+      <span class="nt">&lt;script</span> <span class="na">id=</span><span class="s">"chatbotscript"</span> <span class="na">src=</span><span class="s">"http://localhost:3232/static/get.js"</span> <span class="na">data=</span><span class="s">"http://localhost:3232/chat/{{ bot.id }}"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
+
+   </code></pre></figure>
+
+</main>
+
+
+{% endblock %}

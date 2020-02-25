@@ -24,9 +24,11 @@
          <div class="col-lg-8 col-md-8 col-sm-8">
             <h4 class="text-uppercase" style="margin-top: 0;">Add details as a Paragraph</h4>
             <form action="{% url 'user:userpanel:editBot' bot.id %}" method="post">
+               {% csrf_token %}
                <div class="align-items-center justify-content-center">
+                  
                   <textarea name="bot_paragraph" id="paragraph" class="form-control subscription-email"
-                     style="min-height:400px;width: 100%; height: 100%;" value="{{bot_inst.paragraph}}"></textarea>
+                     style="min-height:400px;width: 100%; height: 100%;">{% if bot.paragraph %}{{bot.paragraph}}{% endif %}</textarea>
                </div>
                <div class="text-right mt-1">
                   <input type="submit" class="btn btn-primary pl-2 pr-2" value="Save and Test"></input>

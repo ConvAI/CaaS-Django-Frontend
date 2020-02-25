@@ -18,9 +18,10 @@ class Bot(models.Model):
     bot_api = models.CharField(max_length=150,null=True,blank=True)
     enabled = models.BooleanField(default=True)
     bot_desc = models.CharField(max_length=300,null=True,blank=True)
-    paragraph = models.CharField(max_length=150,null=True,blank=True)
+    paragraph = models.CharField(max_length=1000,null=True,blank=True)
     metapath = models.CharField(max_length=150,null=True,blank=True)
     storagelink = models.CharField(max_length=200,null=True,blank=True)
+    is_deployed = models.BooleanField(default=False)
     lang = models.ForeignKey(Language,on_delete=models.DO_NOTHING)
 
 

@@ -1,0 +1,42 @@
+{% extends "panelbase.html" %}
+{% block body_block %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+
+        <h2>Deploy your Custom Bot</h2>
+    </div>
+
+
+    {% for bot in bots %}
+    {% if forloop.counter|divisibleby:"4" or forloop.counter == 1 %}
+    <div class="row mb-3">
+    {% endif %}
+       <div class="col-sm-4">
+          <div class="card">
+             <div class="card-body">
+                <h5 class="card-title">{{bot.bot_name}}</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                {% if bot.is_deployed %}
+                <button disabled="disabled" class="btn btn-success">Deployed</button>
+                {% else %}
+                <form action="{% url 'user:userpanel:deployBot' bot.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Deploy</button>
+                </form>
+                {% endif %}
+             </div>
+          </div>
+       </div>
+    {% if forloop.counter|divisibleby:"3"%}
+    </div>
+    {% endif %}
+
+    {% empty %}
+    <p>Sorry, no Bots in this list.</p>
+    {% endfor %}
+
+</main>
+
+
+{% endblock %}
