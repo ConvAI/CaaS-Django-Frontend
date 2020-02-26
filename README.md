@@ -21,10 +21,16 @@ To run this project in your development machine, follow these steps:
     `python manage.py makemigrations user userpanel`
 
     `python manage.py migrate`
+    
+6. Manually enter userpanel_language table in nervaidb database:
 
-6. If everything is alright, you should be able to start the Django development server:
+    `id lang_code  lang_name`
+    `1  en-us      English-US`
+    `1  en-uk      English-UK`
+    
+7. If everything is alright, you should be able to start the Django development server:
 
     `python manage.py runserver`
 
-7. Open your browser and go to http://127.0.0.1:8000
+8. Open your browser and go to http://127.0.0.1:8000
 
