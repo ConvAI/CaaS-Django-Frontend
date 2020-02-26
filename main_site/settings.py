@@ -27,7 +27,7 @@ SECRET_KEY = 'qhev1xxf!1)u^pmjgz&a8s+1(vo#4eg(e#iavtvtjgz%*&f^z-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.66','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'nervaidb',
         'USER': 'admin',
         'PASSWORD': 'test',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
@@ -133,4 +133,5 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/user/login/'
 
-BOT_SERVER = 'http://127.0.0.1:3232/chat/'
+BOT_SERVER = '13.258.88.88'
+BOT_SERVER_PORT = '8081'

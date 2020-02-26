@@ -6,6 +6,7 @@ from user.models import UserProfileInfo
 from userpanel.models import Bot,Language,lang_names
 from userpanel.forms import BotForm,LanguageForm
 from django.http.response import Http404
+from main_site.settings import BOT_SERVER,BOT_SERVER_PORT
 
 # Create your views here.
 @login_required
@@ -62,11 +63,15 @@ def editBot(request,bot_id):
     
     userinfo = UserProfileInfo.objects.get(user=request.user)
     if(request.method == 'POST'):
+        test = False
         if(request.POST.get('bot_paragraph')):
             bot_inst.paragraph = request.POST.get('bot_paragraph')
+            bot_inst.is_deployed = False
             bot_inst.save()
-        return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo})
-    return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo})
+            test = True
+            bot_api_url = 'http://' + BOT_SERVER + ':' + BOT_SERVER_PORT
+        return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo,'test':test,'bot_url':bot_api_url})
+    return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo,'test':False})
 
 @login_required
 def deploy(request):
@@ -93,4 +98,5 @@ def deployBot(request,bot_id):
     if(request.method == 'POST'):
         bot_inst.is_deployed = True
         bot_inst.save()
-        return render(request,'showScript.html',{'bot':bot_inst})
+        bot_api_url = 'http://' + BOT_SERVER + ':' + BOT_SERVER_PORT
+        return render(request,'showScript.html',{'bot':bot_inst,'bot_url':bot_api_url})
