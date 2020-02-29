@@ -1,5 +1,6 @@
 {% extends "panelbase.html" %}
 {% block body_block %}
+{% load static %}
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -9,12 +10,29 @@
 
    <p>Copy and embed this script tag in your website.</p>
 
-   <figure class="highlight border"><pre><code class="language-html" data-lang="html">
+   <figure class="highlight border"><pre><code id="codetag" class="language-html" data-lang="html">
 
       <span class="nt">&lt;script</span> <span class="na">id=</span><span class="s">"chatbotscript"</span> <span class="na">src=</span><span class="s">"{{ bot_url }}/static/get.js"</span> <span class="na">data=</span><span class="s">"{{ bot_url }}/chat/{{ bot.id }}"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
+      </code>
 
-   </code></pre></figure>
-
+      <button id="copy-btn" class="btn btn-primary">Copy</button>
+   </pre></figure>
+   <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+   <script>
+      $('#copy-btn').click(() => {
+         //alert('df');
+         var copyText = document.getElementById("codetag");
+         console.log(copyText.innerText.trim());
+         var el = document.createElement('textarea');
+         el.setAttribute('readonly', '');
+         el.value = copyText.innerText.trim();
+         el.style = {position: 'absolute', left: '-9999px'};
+         document.body.appendChild(el);
+         el.select();
+         document.execCommand('copy');
+         document.body.removeChild(el);
+      });
+   </script>
 </main>
 
 
