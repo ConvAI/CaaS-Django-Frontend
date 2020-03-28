@@ -47,15 +47,15 @@
     <div class="row">
       <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
-          <ul class="nav flex-column">
+          <ul class="nav flex-column" id="tab-links">
             <li class="nav-item">
-              <a class="nav-link active" href="{% url 'user:userpanel:panel' %}">
+              <a class="nav-link" href="{% url 'user:userpanel:panel' %}" id="dashboard">
                 <span data-feather="home"></span>
                 Dashboard <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'user:userpanel:createBot' %}">
+              <a class="nav-link" href="{% url 'user:userpanel:createBot' %}" id="createBot">
                 <span data-feather="file"></span>
                 Create Bot
               </a>
@@ -67,7 +67,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'user:userpanel:deploy' %}">
+              <a class="nav-link" href="{% url 'user:userpanel:deploy' %}" id="deploy">
                 <span data-feather="users"></span>
                 Deploy Bot
               </a>
@@ -138,6 +138,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script>
       feather.replace()
+      $(document).ready(function(){
+        let path = window.location.pathname;
+        if( path.includes('create')){
+          $('#createBot').addClass('active');
+        }
+        else if( path.includes('deploy')){
+          $('#deploy').addClass('active');
+        }
+        else {
+          $('#dashboard').addClass('active');
+        }
+      });
     </script>
   <script src="{% static 'userpanel/js/dashboard.js' %}"></script>
 </body>

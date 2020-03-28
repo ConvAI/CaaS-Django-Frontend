@@ -16,12 +16,18 @@
           <div class="card">
              <div class="card-body">
                 <h5 class="card-title">{{bot.bot_name}}</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">{{bot.bot_desc}}</p>
                 {% if bot.is_deployed %}
-                <button disabled="disabled" class="btn btn-success">Deployed</button>
+                  <form action="{% url 'user:userpanel:disableBot' bot.id %}" method="post">
+                     {% csrf_token %}
+                     <span style="color: rgb(74, 196, 63);">Bot has been deployed</span>
+                     <br>
+                     <button type="submit" class="btn btn-danger">Disable</button>
+                  </form>
                 {% else %}
                 <form action="{% url 'user:userpanel:deployBot' bot.id %}" method="post">
                     {% csrf_token %}
+                    <br>
                     <button type="submit" class="btn btn-primary">Deploy</button>
                 </form>
                 {% endif %}

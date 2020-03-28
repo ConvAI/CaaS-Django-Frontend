@@ -100,3 +100,17 @@ def deployBot(request,bot_id):
         bot_inst.save()
         bot_api_url = 'http://' + BOT_SERVER + ':' + BOT_SERVER_PORT
         return render(request,'showScript.html',{'bot':bot_inst,'bot_url':bot_api_url,'userinfo':userinfo})
+
+        
+@login_required
+def disableBot(request,bot_id):
+    try:
+        bot_inst = get_object_or_404(Bot, pk=bot_id)
+    except Bot.DoesNotExist:
+        raise Http404("Bot does not exist")
+
+    userinfo = UserProfileInfo.objects.get(user=request.user)
+    if(request.method == 'POST'):
+        bot_inst.is_deployed = False
+        bot_inst.save()
+        return HttpResponseRedirect(reverse('user:userpanel:deploy'))

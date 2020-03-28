@@ -9,5 +9,6 @@ urlpatterns=[
     path('edit/<int:bot_id>/',views.editBot,name='editBot'),
     path('deploy/',views.deploy,name='deploy'),
     path('deploy/<int:bot_id>/',views.deployBot,name='deployBot'),
+    path('disablebot/<int:bot_id>/',views.disableBot,name='disableBot'),
 
 ]
