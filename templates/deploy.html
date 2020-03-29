@@ -18,12 +18,25 @@
                 <h5 class="card-title">{{bot.bot_name}}</h5>
                 <p class="card-text">{{bot.bot_desc}}</p>
                 {% if bot.is_deployed %}
-                  <form action="{% url 'user:userpanel:disableBot' bot.id %}" method="post">
-                     {% csrf_token %}
-                     <span style="color: rgb(74, 196, 63);">Bot has been deployed</span>
-                     <br>
-                     <button type="submit" class="btn btn-danger">Disable</button>
-                  </form>
+                  <span style="color: rgb(74, 196, 63);">Bot has been deployed</span>
+                  <br>
+                  <div class="row">
+                     <div class="col">
+                        <form action="{% url 'user:userpanel:deployBot' bot.id %}" method="get">
+                           {% csrf_token %}
+                           <button type="submit" class="btn btn-primary">Show Script</button>             
+                        </form>
+                     </div>
+                     
+                     <div class="col" style="text-align: right;">
+                        <form action="{% url 'user:userpanel:disableBot' bot.id %}" method="post">
+                           {% csrf_token %}
+                           <button type="submit" class="btn btn-danger" >Disable</button>
+                        </form>
+                     </div>
+                   
+                  </div>
+                  
                 {% else %}
                 <form action="{% url 'user:userpanel:deployBot' bot.id %}" method="post">
                     {% csrf_token %}

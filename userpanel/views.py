@@ -100,6 +100,10 @@ def deployBot(request,bot_id):
         bot_inst.save()
         bot_api_url = 'http://' + BOT_SERVER + ':' + BOT_SERVER_PORT
         return render(request,'showScript.html',{'bot':bot_inst,'bot_url':bot_api_url,'userinfo':userinfo})
+    elif(request.method == 'GET' and bot_inst.is_deployed):
+        bot_api_url = 'http://' + BOT_SERVER + ':' + BOT_SERVER_PORT
+        return render(request,'showScript.html',{'bot':bot_inst,'bot_url':bot_api_url,'userinfo':userinfo})
+
 
         
 @login_required
