@@ -48,7 +48,7 @@ def createBot(request):
             bot_inst.save()
             return HttpResponseRedirect(reverse('user:userpanel:editBot',args=[bot_inst.id]))
         else:
-            print(botform.errors,langform.errors)
+            print(botform.errors)
         
         # TODO send errors to user to update form values
         # return render(request,'dashboard.html',context={'userinfo':userinfo})
@@ -70,7 +70,11 @@ def editBot(request,bot_id):
             bot_inst.save()
             test = True
             bot_api_url = 'http://' + BOT_SERVER + ':' + BOT_SERVER_PORT
-        return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo,'test':test,'bot_url':bot_api_url})
+            return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo,'test':test,'bot_url':bot_api_url})
+        else:
+            bot_inst.paragraph = request.POST.get('bot_paragraph')
+            bot_inst.is_deployed = False
+            bot_inst.save()
     return render(request,'editBot.html',{'bot':bot_inst,'userinfo':userinfo,'test':False})
 
 @login_required
