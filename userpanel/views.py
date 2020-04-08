@@ -81,13 +81,15 @@ def editBot(request,bot_id):
 def deploy(request):
     userinfo = UserProfileInfo.objects.get(user=request.user)
     bots = Bot.objects.filter(user=request.user,c_info=userinfo,paragraph__isnull=False)
+    bots = list(filter(lambda bot: bot.paragraph,bots))
     rows = 0
-    count = bots.count()
+    # count = bots.count()
+    count = len(bots)
     if(count):
         if(count%3==0):
-            rows = bots.count()//3
+            rows = count//3
         else:
-            rows = bots.count()//3 + 1
+            rows = count//3 + 1
     return render(request,'deploy.html',context={'userinfo':userinfo,'bots':bots,'rows':range(rows)})
 
 
