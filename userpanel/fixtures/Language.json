@@ -1,0 +1,1 @@
+[{"model": "userpanel.language", "pk": 1, "fields": {"lang_code": "en-us", "lang_name": "English-US"}}, {"model": "userpanel.language", "pk": 2, "fields": {"lang_code": "en-uk", "lang_name": "English-UK"}}]
