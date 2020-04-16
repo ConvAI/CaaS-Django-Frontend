@@ -138,3 +138,6 @@ LOGIN_URL = '/user/login/'
 
 BOT_SERVER = '127.0.0.1'
 BOT_SERVER_PORT = '8082'
+
+# session expiry
+SESSION_COOKIE_AGE = 86400
