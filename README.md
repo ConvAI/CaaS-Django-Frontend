@@ -22,11 +22,9 @@ To run this project in your development machine, follow these steps:
 
     `python manage.py migrate`
     
-6. Manually enter userpanel_language table in nervaidb database:
+6. Inserting initial data of userpanel_language table in nervaidb database:
 
-    `id lang_code  lang_name`
-    `1  en-us      English-US`
-    `1  en-uk      English-UK`
+    `python manage.py loaddata Language.json`
     
 7. If everything is alright, you should be able to start the Django development server:
 
